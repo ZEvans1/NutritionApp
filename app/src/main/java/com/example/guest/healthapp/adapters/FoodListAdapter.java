@@ -32,8 +32,36 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.FoodVi
 
     @Override
     public FoodListAdapter.FoodViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext().inflate(R.layout.food_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_list_item, parent, false);
         FoodViewHolder viewHolder = new FoodViewHolder(view);
         return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(FoodListAdapter.FoodViewHolder holder, int position) {
+        holder.bindFood(mFoods.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return mFoods.size();
+    }
+
+    public class FoodViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.foodImageView) ImageView mFoodImageView;
+        @BindView(R.id.foodNameTextView) TextView mNameTextView;
+
+        private Context mContext;
+
+        public FoodViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+            mContext = itemView.getContext();
+
+        }
+
+        public void bindFood(Food food) {
+            mNameTextView.setText(food.getName());
+        }
     }
 }

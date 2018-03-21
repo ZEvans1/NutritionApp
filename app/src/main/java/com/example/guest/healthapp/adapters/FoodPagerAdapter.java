@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.guest.healthapp.models.Food;
+import com.example.guest.healthapp.ui.FoodDetailFragment;
 
 import java.util.ArrayList;
 
