@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.guest.healthapp.R;
 import com.example.guest.healthapp.models.Food;
+import com.example.guest.healthapp.ui.FoodDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -47,7 +48,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.FoodVi
         return mFoods.size();
     }
 
-    public class FoodViewHolder extends RecyclerView.ViewHolder {
+    public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.foodImageView) ImageView mFoodImageView;
         @BindView(R.id.foodNameTextView) TextView mNameTextView;
 
@@ -57,7 +58,17 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.FoodVi
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
 
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, FoodDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("foods", Parcels.wrap(mFoods));
+            mContext.startActivity(intent);
         }
 
         public void bindFood(Food food) {

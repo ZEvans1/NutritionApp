@@ -26,6 +26,7 @@
                 android:value="com.example.guest.healthapp.ui.MainActivity">
             </meta-data>
         </activity>
+        <activity android:name=".ui.FoodDetailActivity"></activity>
     </application>
 
 </manifest>

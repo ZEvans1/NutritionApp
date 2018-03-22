@@ -30,7 +30,6 @@ public class NutritionService {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.NUTRITION_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter(Constants.NUTRITION_FOOD_QUERY_PARAMETER, food);
         String url = urlBuilder.build().toString();
-        Log.v(TAG, url);
 
 
         Request request = new Request.Builder()
@@ -56,9 +55,6 @@ public class NutritionService {
 
                 String name = foodJSON.getString("food_name");
 
-//                ArrayList<String> photoArray = new ArrayList<>();
-//                JSONArray photoJSON = foodJSON.getJSONObject("photo")
-//                        .getJSONArray("thumb");
                 String photo = foodJSON.getJSONObject("photo").getString("thumb");
                 Log.d(TAG, "processResults: " + photo);
 
