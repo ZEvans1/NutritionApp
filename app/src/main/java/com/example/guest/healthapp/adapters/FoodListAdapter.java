@@ -48,7 +48,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.FoodVi
     }
 
     public class FoodViewHolder extends RecyclerView.ViewHolder {
-//        @BindView(R.id.foodImageView) ImageView mFoodImageView;
+        @BindView(R.id.foodImageView) ImageView mFoodImageView;
         @BindView(R.id.foodNameTextView) TextView mNameTextView;
 
         private Context mContext;

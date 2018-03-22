@@ -44,6 +44,8 @@ public class FoodDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_food_detail_fragment, container, false);
         ButterKnife.bind(this, view);
 
+        Picasso.with(view.getContext()).load(mFood.getPhoto()).into(mImageLabel);
+
         mNameLabel.setText(mFood.getName());
         return view;
     }
