@@ -53,9 +53,17 @@ public class NutritionService {
             JSONArray commonJSON = nutritionJSON.getJSONArray("common");
             for (int i = 0; i < commonJSON.length(); i++) {
                 JSONObject foodJSON = commonJSON.getJSONObject(i);
+
                 String name = foodJSON.getString("food_name");
-                String photo = foodJSON.getString("photo");
+
+//                ArrayList<String> photoArray = new ArrayList<>();
+//                JSONArray photoJSON = foodJSON.getJSONObject("photo")
+//                        .getJSONArray("thumb");
+                String photo = foodJSON.getJSONObject("photo").getString("thumb");
+                Log.d(TAG, "processResults: " + photo);
+
                 String tagId = foodJSON.getString("tag_id");
+
                 Food food = new Food(name, photo, tagId);
                 foods.add(food);
             }

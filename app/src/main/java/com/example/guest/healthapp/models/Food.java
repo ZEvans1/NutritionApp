@@ -2,6 +2,8 @@ package com.example.guest.healthapp.models;
 
 import org.parceler.Parcel;
 
+import java.util.ArrayList;
+
 @Parcel
 public class Food {
     String name;
