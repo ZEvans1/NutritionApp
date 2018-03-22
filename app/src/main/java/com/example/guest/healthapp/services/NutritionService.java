@@ -1,5 +1,7 @@
 package com.example.guest.healthapp.services;
 
+import android.util.Log;
+
 import com.example.guest.healthapp.Constants;
 import com.example.guest.healthapp.models.Food;
 
@@ -19,6 +21,8 @@ import okhttp3.Response;
 
 public class NutritionService {
 
+    private static final String TAG = "activity";
+
     public static void findFoods(String food, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
@@ -26,6 +30,8 @@ public class NutritionService {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.NUTRITION_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter(Constants.NUTRITION_FOOD_QUERY_PARAMETER, food);
         String url = urlBuilder.build().toString();
+        Log.v(TAG, url);
+
 
         Request request = new Request.Builder()
                 .url(url)
@@ -48,9 +54,9 @@ public class NutritionService {
             for (int i = 0; i < commonJSON.length(); i++) {
                 JSONObject foodJSON = commonJSON.getJSONObject(i);
                 String name = foodJSON.getString("food_name");
-                String photo = foodJSON.getString("photo");
+//                String photo = foodJSON.getString("photo");
                 String tagId = foodJSON.getString("tag_id");
-                Food food = new Food(name, photo, tagId);
+                Food food = new Food(name, tagId);
                 foods.add(food);
             }
         }
