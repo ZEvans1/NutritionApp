@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.guest.healthapp.Constants;
 import com.example.guest.healthapp.R;
 import com.example.guest.healthapp.adapters.FoodListAdapter;
 import com.example.guest.healthapp.models.Food;
@@ -18,6 +19,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.Response;
 
 public class FoodListActivity extends AppCompatActivity {
@@ -61,6 +65,8 @@ public class FoodListActivity extends AppCompatActivity {
                         mRecyclerView.setHasFixedSize(true);
                     }
                 });
+
+
             }
         });
     }

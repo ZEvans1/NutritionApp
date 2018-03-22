@@ -14,9 +14,11 @@ import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class NutritionService {
@@ -37,6 +39,29 @@ public class NutritionService {
                 .header("x-app-id", Constants.NUTRITION_ID)
                 .header("x-app-key", Constants.NUTRITION_KEY)
                 .header("x-remote-user-id", "0")
+                .build();
+
+        Call call = client.newCall(request);
+        call.enqueue(callback);
+    }
+
+    public static void getDetails(String foodRequestName, Callback callback) {
+        OkHttpClient client = new OkHttpClient.Builder()
+                .build();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.NUTRITION_NATURAL_BASE_URL).newBuilder();
+        String url = urlBuilder.build().toString();
+
+        RequestBody formBody = new FormBody.Builder()
+                .add("query", foodRequestName)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .header("Content-Type", "application/json")
+                .header("x-app-id", Constants.NUTRITION_ID)
+                .header("x-app-key", Constants.NUTRITION_KEY)
+                .header("x-remote-user-id", "0")
+                .post(formBody)
                 .build();
 
         Call call = client.newCall(request);
