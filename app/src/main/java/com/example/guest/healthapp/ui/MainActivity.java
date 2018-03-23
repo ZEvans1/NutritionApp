@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.guest.healthapp.R;
 
@@ -34,9 +35,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mButtonFood) {
             String food = mFoodEditText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, FoodListActivity.class);
-            intent.putExtra("food", food);
-            startActivity(intent);
+            if (food.length() > 0) {
+                Intent intent = new Intent(MainActivity.this, FoodListActivity.class);
+                intent.putExtra("food", food);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "EMPTY SEARCH - PLEASE ENTER TEXT", Toast.LENGTH_LONG).show();
+            }
         }
     }
 }

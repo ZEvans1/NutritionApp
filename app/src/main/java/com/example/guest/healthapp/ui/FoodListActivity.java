@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.guest.healthapp.Constants;
 import com.example.guest.healthapp.R;
@@ -55,18 +57,30 @@ public class FoodListActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 foods = nutritionService.processResults(response);
 
-                FoodListActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter = new FoodListAdapter(getApplicationContext(), foods);
-                        mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(FoodListActivity.this);
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
-                    }
-                });
-
-
+                if (foods.size() > 0) {
+                    FoodListActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAdapter = new FoodListAdapter(getApplicationContext(), foods);
+                            mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(FoodListActivity.this);
+                            mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setHasFixedSize(true);
+                        }
+                    });
+                } else {
+                    FoodListActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAdapter = new FoodListAdapter(getApplicationContext(), foods);
+                            mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(FoodListActivity.this);
+                            mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setHasFixedSize(true);
+                            Toast.makeText(FoodListActivity.this, "0 RESULTS - TRY ANOTHER TERM", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
         });
     }
