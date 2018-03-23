@@ -81,7 +81,6 @@ public class NutritionService {
                 String name = foodJSON.getString("food_name");
 
                 String photo = foodJSON.getJSONObject("photo").getString("thumb");
-                Log.d(TAG, "processResults: " + photo);
 
                 String tagId = foodJSON.getString("tag_id");
 
