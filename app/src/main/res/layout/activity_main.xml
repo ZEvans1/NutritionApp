@@ -39,4 +39,14 @@
         android:layout_marginTop="174dp"
         android:text="Search" />
 
+    <Button
+        android:id="@+id/buttonAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonFood"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/buttonFood"
+        android:layout_marginBottom="13dp"
+        android:text="About" />
+
 </RelativeLayout>
