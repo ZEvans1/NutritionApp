@@ -9,5 +9,8 @@ org.gradle.jvmargs=-Xmx1536m
 xAppId = "ID HERE"
 xAppKey = "API KEY HERE"
 
-getting: https://trackapi.nutritionix.com/v2/search/instant?food=apple
-need:    https://trackapi.nutritionix.com/v2/search/instant?query=apple
+
+1.) Use custom typeface
+2.) Validate form
+3.) One implicit intent
+-- Make second API call for post request --

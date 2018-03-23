@@ -1,6 +1,7 @@
 package com.example.guest.healthapp.ui;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        Typeface caviarFont = Typeface.createFromAsset(getAssets(), "fonts/caviardreams.ttf");
+        mAppNameTextView.setTypeface(caviarFont);
 
         mButtonFood.setOnClickListener(this);
     }
