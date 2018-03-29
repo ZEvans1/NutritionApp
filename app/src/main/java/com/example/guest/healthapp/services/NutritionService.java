@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.guest.healthapp.Constants;
 import com.example.guest.healthapp.models.Food;
+import com.example.guest.healthapp.models.Nutrient;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,7 +24,6 @@ import okhttp3.Response;
 
 public class NutritionService {
 
-    private static final String TAG = "activity";
 
     public static void findFoods(String food, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
@@ -45,7 +45,7 @@ public class NutritionService {
         call.enqueue(callback);
     }
 
-    public static void getDetails(String foodRequestName, Callback callback) {
+    public static void findDetails(String foodRequestName, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.NUTRITION_NATURAL_BASE_URL).newBuilder();
@@ -87,13 +87,38 @@ public class NutritionService {
                 Food food = new Food(name, photo, tagId);
                 foods.add(food);
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return foods;
     }
+
+    public ArrayList<Nutrient> processNutrientResults(Response response) {
+        ArrayList<Nutrient> nutrients = new ArrayList<>();
+
+        try {
+            String jsonData = response.body().string();
+            JSONObject nutritionJSON = new JSONObject(jsonData);
+            JSONArray foodsJSON = nutritionJSON.getJSONArray("foods");
+            for (int i = 0; i < foodsJSON.length(); i++) {
+                JSONObject foodJSON = foodsJSON.getJSONObject(i);
+
+                String nfCalories = foodJSON.getString("nf_calories");
+
+                String nfSugars = foodJSON.getString("nf_sugars");
+
+                Nutrient nutrient = new Nutrient(nfCalories, nfSugars);
+                nutrients.add(nutrient);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return nutrients;
+
+    }
 }
+

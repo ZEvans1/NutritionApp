@@ -50,6 +50,10 @@ public class FoodListActivity extends AppCompatActivity {
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         getFoods(food);
 
+//        Intent nextIntent = new Intent(FoodListActivity.this, FoodDetailActivity.class);
+//        nextIntent.putExtra("food", food);
+//        startActivity(nextIntent);
+
         mRecentFood = mSharedPreferences.getString(Constants.PREFERENCES_FOOD_KEY, null);
         Log.d("Shared Pref Food", mRecentFood);
 
