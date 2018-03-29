@@ -1,6 +1,8 @@
 package com.example.guest.healthapp.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,6 +29,10 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class FoodListActivity extends AppCompatActivity {
+
+    private SharedPreferences mSharedPreferences;
+    private String mRecentFood;
+
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
     private FoodListAdapter mAdapter;
@@ -41,8 +47,12 @@ public class FoodListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String food = intent.getStringExtra("food");
-
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         getFoods(food);
+
+        mRecentFood = mSharedPreferences.getString(Constants.PREFERENCES_FOOD_KEY, null);
+        Log.d("Shared Pref Food", mRecentFood);
+
     }
 
     private void getFoods(String food) {

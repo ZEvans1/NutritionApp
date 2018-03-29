@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "734001144102",
+    "firebase_url": "https://mealmaker-b0351.firebaseio.com",
+    "project_id": "mealmaker-b0351",
+    "storage_bucket": "mealmaker-b0351.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734001144102:android:d74ede31f5fb2d41",
+        "android_client_info": {
+          "package_name": "com.example.guest.healthapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734001144102-5ba753a8k795hbslunv3p0h7ks3fmeoe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.guest.healthapp",
+            "certificate_hash": "0fbd2ddb1832be5f9452f16e190aa6327223aa0e"
+          }
+        },
+        {
+          "client_id": "734001144102-sg1pv4ctp5uig4m28d16shoc5rsjcpd9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeKD-6AncmFzi6dZ32335NEacMAmFNGvQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734001144102-sg1pv4ctp5uig4m28d16shoc5rsjcpd9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
