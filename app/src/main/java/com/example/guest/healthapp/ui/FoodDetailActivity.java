@@ -27,8 +27,6 @@ public class FoodDetailActivity extends AppCompatActivity {
     @BindView(R.id.viewPager) ViewPager mViewPager;
     private FoodPagerAdapter adapterViewPager;
     ArrayList<Food> mFoods = new ArrayList<>();
-    public ArrayList<Nutrient> nutrients = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,24 +41,24 @@ public class FoodDetailActivity extends AppCompatActivity {
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
 
-        for (int i = 0; i < mFoods.size(); i++) {
-            getDetails(mFoods.get(i).getName());
-        }
+//        for (int i = 0; i < mFoods.size(); i++) {
+//            getDetails(mFoods.get(i).getName());
+//        }
     }
 
-    private void getDetails(final String food) {
-        final NutritionService nutritionService = new NutritionService();
-        nutritionService.findDetails(food, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                nutrients = nutritionService.processNutrientResults(response);
-                Log.d("2nd call", "name " + food + " nutrients " + nutrients);
-            }
-        });
-    }
+//    private void getDetails(final String food) {
+//        final NutritionService nutritionService = new NutritionService();
+//        nutritionService.findDetails(food, new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                nutrients = nutritionService.processNutrientResults(response);
+//                Log.d("2nd call", "name " + food + " nutrients " + nutrients);
+//            }
+//        });
+//    }
 }

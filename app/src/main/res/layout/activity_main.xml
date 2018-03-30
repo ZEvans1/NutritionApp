@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:ems="10"
-        android:hint="Enter a food" />
+        android:hint="Enter a food name" />
 
     <Button
         android:id="@+id/buttonFood"
@@ -37,16 +37,24 @@
         android:layout_above="@+id/buttonAbout"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="103dp"
-        android:text="Search" />
+        android:text="View database" />
 
     <Button
         android:id="@+id/buttonAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/buttonFood"
+        android:layout_alignLeft="@+id/buttonNutrition"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/buttonFood"
-        android:layout_marginBottom="13dp"
+        android:layout_alignStart="@+id/buttonNutrition"
         android:text="About" />
+
+    <Button
+        android:id="@+id/buttonNutrition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonAbout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="19dp"
+        android:text="Get Item Info" />
 
 </RelativeLayout>

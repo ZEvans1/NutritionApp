@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.appNameTextView) TextView mAppNameTextView;
     @BindView(R.id.foodEditText) EditText mFoodEditText;
     @BindView(R.id.buttonFood) Button mButtonFood;
+    @BindView(R.id.buttonNutrition) Button mButtonNutrition;
     @BindView(R.id.buttonAbout) Button mButtonAbout;
 
     @Override
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mButtonFood.setOnClickListener(this);
         mButtonAbout.setOnClickListener(this);
+        mButtonNutrition.setOnClickListener(this);
     }
 
     @Override
@@ -51,6 +53,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(MainActivity.this, FoodListActivity.class);
                 intent.putExtra("food", food);
                 addToSharedPreferences(food);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "EMPTY SEARCH - PLEASE ENTER TEXT", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        if (v == mButtonNutrition) {
+            String food = mFoodEditText.getText().toString();
+            if (food.length() > 0) {
+                Intent intent = new Intent(MainActivity.this, NutrientActivity.class);
+                intent.putExtra("food", food);
                 startActivity(intent);
             } else {
                 Toast.makeText(this, "EMPTY SEARCH - PLEASE ENTER TEXT", Toast.LENGTH_LONG).show();
