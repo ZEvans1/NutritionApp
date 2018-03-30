@@ -14,14 +14,18 @@ import android.widget.Toast;
 
 import com.example.guest.healthapp.Constants;
 import com.example.guest.healthapp.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
+//    private SharedPreferences mSharedPreferences;
+//    private SharedPreferences.Editor mEditor;
+
+    private DatabaseReference mSearchedFoodReference;
 
     @BindView(R.id.appNameTextView) TextView mAppNameTextView;
     @BindView(R.id.foodEditText) EditText mFoodEditText;
@@ -31,14 +35,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mSearchedFoodReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCHED_FOOD);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Typeface caviarFont = Typeface.createFromAsset(getAssets(), "fonts/caviardreams.ttf");
         mAppNameTextView.setTypeface(caviarFont);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mEditor = mSharedPreferences.edit();
 
         mButtonFood.setOnClickListener(this);
         mButtonAbout.setOnClickListener(this);
@@ -50,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mButtonFood) {
             String food = mFoodEditText.getText().toString();
             if (food.length() > 0) {
+                saveFoodToFirebase(food);
                 Intent intent = new Intent(MainActivity.this, FoodListActivity.class);
                 intent.putExtra("food", food);
                 addToSharedPreferences(food);
@@ -74,7 +85,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
     }
+
+    public void saveFoodToFirebase(String food) {
+        mSearchedFoodReference.push().setValue(food);
+    }
+
     private void addToSharedPreferences(String food) {
-        mEditor.putString(Constants.PREFERENCES_FOOD_KEY, food).apply();
+//        mEditor.putString(Constants.PREFERENCES_FOOD_KEY, food).apply();
     }
 }
