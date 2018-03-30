@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HealthApp</string>
+    <string name="caloriesString">Calories: </string>
+    <string name="sugarsString">Sugars: </string>
 </resources>

@@ -55,7 +55,11 @@ public class NutrientActivity extends AppCompatActivity {
                     NutrientActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mCaloriesTextView.setText(nutrients.get(0).getNfCalories());
+                            String caloriesText = getString(R.string.caloriesString) + " " + nutrients.get(0).getNfCalories();
+                            mCaloriesTextView.setText(caloriesText);
+
+                            String sugarsText = getString(R.string.sugarsString) + " " + nutrients.get(0).getNfSugars();
+                            mSugarsTextView.setText(sugarsText);
                         }
                     });
                 } else {
