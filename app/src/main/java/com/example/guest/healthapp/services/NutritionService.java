@@ -105,11 +105,13 @@ public class NutritionService {
             for (int i = 0; i < foodsJSON.length(); i++) {
                 JSONObject foodJSON = foodsJSON.getJSONObject(i);
 
+                String foodName = foodJSON.getString("food_name");
+
                 String nfCalories = foodJSON.getString("nf_calories");
 
                 String nfSugars = foodJSON.getString("nf_sugars");
 
-                Nutrient nutrient = new Nutrient(nfCalories, nfSugars);
+                Nutrient nutrient = new Nutrient(foodName, nfCalories, nfSugars);
                 nutrients.add(nutrient);
             }
         } catch (IOException e) {

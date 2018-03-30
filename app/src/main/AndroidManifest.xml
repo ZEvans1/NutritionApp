@@ -21,15 +21,16 @@
         <activity android:name=".ui.AboutActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.guest.healthapp.ui.MainActivity"></meta-data>
+                android:value="com.example.guest.healthapp.ui.MainActivity" />
         </activity>
         <activity android:name=".ui.FoodListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.guest.healthapp.ui.MainActivity"></meta-data>
+                android:value="com.example.guest.healthapp.ui.MainActivity" />
         </activity>
         <activity android:name=".ui.FoodDetailActivity" />
-        <activity android:name=".ui.NutrientActivity"></activity>
+        <activity android:name=".ui.NutrientActivity" />
+        <activity android:name=".ui.SavedActivity"></activity>
     </application>
 
 </manifest>

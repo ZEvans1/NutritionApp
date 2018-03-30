@@ -52,7 +52,6 @@ public class NutrientActivity extends AppCompatActivity implements View.OnClickL
 //        mEditor = mSharedPreferences.edit();
 
         mButtonSaveNutrient.setOnClickListener(this);
-        mFoodNameTextView.setText(food);
     }
 
     @Override
@@ -84,6 +83,8 @@ public class NutrientActivity extends AppCompatActivity implements View.OnClickL
                     NutrientActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            mFoodNameTextView.setText(nutrients.get(0).getFoodName());
+
                             String caloriesText = getString(R.string.caloriesString) + " " + nutrients.get(0).getNfCalories();
                             mCaloriesTextView.setText(caloriesText);
 

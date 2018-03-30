@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.buttonFood) Button mButtonFood;
     @BindView(R.id.buttonNutrition) Button mButtonNutrition;
     @BindView(R.id.buttonAbout) Button mButtonAbout;
+    @BindView(R.id.buttonSaved) Button mButtonSaved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +80,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 Toast.makeText(this, "EMPTY SEARCH - PLEASE ENTER TEXT", Toast.LENGTH_LONG).show();
             }
+        }
+        if (v == mButtonSaved) {
+            Intent intent = new Intent(MainActivity.this, SavedActivity.class);
+            startActivity(intent);
         }
         if (v == mButtonAbout) {
             Intent intent = new Intent(MainActivity.this, AboutActivity.class);
