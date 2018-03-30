@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
         android:text="Meal Maker"
-        android:textSize="50sp"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -40,6 +40,7 @@
         android:layout_marginBottom="21dp"
         android:layout_marginLeft="21dp"
         android:layout_marginStart="21dp"
+        android:textSize="12sp"
         android:text="View database" />
 
     <Button
@@ -51,6 +52,7 @@
         android:layout_marginStart="11dp"
         android:layout_toEndOf="@+id/buttonFood"
         android:layout_toRightOf="@+id/buttonFood"
+        android:textSize="12sp"
         android:text="About" />
 
     <Button
@@ -61,18 +63,17 @@
         android:layout_alignLeft="@+id/buttonFood"
         android:layout_alignStart="@+id/buttonFood"
         android:layout_marginBottom="18dp"
+        android:textSize="12sp"
         android:text="Get Item Info" />
 
     <Button
         android:id="@+id/buttonSaved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonFood"
         android:layout_alignBottom="@+id/buttonFood"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="47dp"
-        android:layout_marginRight="47dp"
+        android:layout_alignEnd="@+id/appNameTextView"
+        android:layout_alignRight="@+id/appNameTextView"
+        android:textSize="12sp"
         android:text="Saved Foods" />
 
 </RelativeLayout>

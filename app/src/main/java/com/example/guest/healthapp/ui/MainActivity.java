@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButtonFood.setOnClickListener(this);
         mButtonAbout.setOnClickListener(this);
         mButtonNutrition.setOnClickListener(this);
+        mButtonSaved.setOnClickListener(this);
     }
 
     @Override
