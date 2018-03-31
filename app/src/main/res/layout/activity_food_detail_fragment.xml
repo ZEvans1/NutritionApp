@@ -50,21 +50,20 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_above="@+id/saveFoodButton"
                 android:paddingLeft="30dp"
                 android:paddingTop="20dp"
                 android:paddingRight="30dp">
 
             </LinearLayout>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Save Food"
-                android:id="@+id/saveFoodButton"
-                android:layout_alignParentBottom="true"
-                android:background="@color/colorAccent"
-                android:textSize="15sp" />
+            <!--<Button-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Save Food"-->
+                <!--android:id="@+id/saveFoodButton"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:background="@color/colorAccent"-->
+                <!--android:textSize="15sp" />-->
         </RelativeLayout>
     </LinearLayout>
 
