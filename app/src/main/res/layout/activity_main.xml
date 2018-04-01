@@ -32,48 +32,46 @@
 
     <Button
         android:id="@+id/buttonFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonNutrition"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginStart="21dp"
-        android:textSize="12sp"
-        android:text="View database" />
-
-    <Button
-        android:id="@+id/buttonAbout"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:layout_toEndOf="@+id/buttonFood"
-        android:layout_toRightOf="@+id/buttonFood"
-        android:textSize="12sp"
-        android:text="About" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="126dp"
+        android:layout_marginStart="15dp"
+        android:text="View database"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/buttonAbout"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonNutrition"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="47dp"
+        android:text="About"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/buttonNutrition"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonAbout"
-        android:layout_alignLeft="@+id/buttonFood"
-        android:layout_alignStart="@+id/buttonFood"
-        android:layout_marginBottom="18dp"
-        android:textSize="12sp"
-        android:text="Get Item Info" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/buttonFood"
+        android:layout_marginEnd="41dp"
+        android:text="Get Item Info"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/buttonSaved"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/buttonFood"
-        android:layout_alignEnd="@+id/appNameTextView"
-        android:layout_alignRight="@+id/appNameTextView"
-        android:textSize="12sp"
-        android:text="Saved Foods" />
+        android:layout_alignEnd="@+id/buttonFood"
+        android:layout_alignTop="@+id/buttonAbout"
+        android:text="My Saved Foods"
+        android:textSize="12sp" />
 
 </RelativeLayout>
