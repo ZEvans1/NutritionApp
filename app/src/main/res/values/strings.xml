@@ -2,4 +2,8 @@
     <string name="app_name">HealthApp</string>
     <string name="caloriesString">Calories: </string>
     <string name="sugarsString">Sugars (g): </string>
+    <string name="aboutMeString">Hello, my name is Zach Evans. I made this app for the Java/Android course at Epicodus.</string>
+    <string name="contactStringOne">You can contact me at: </string>
+    <string name="emailString">Email: zte.zachary@gmail.com</string>
+    <string name="githubString">Github: github.com/ZEvans1</string>
 </resources>

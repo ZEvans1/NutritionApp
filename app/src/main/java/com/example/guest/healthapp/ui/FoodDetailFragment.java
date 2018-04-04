@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,13 @@ public class FoodDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_food_detail_fragment, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext()).load(mFood.getPhoto()).into(mImageLabel);
+
+        if (mFood.getPhoto() != null) {
+            Picasso.with(view.getContext()).load(mFood.getPhoto()).into(mImageLabel);
+        } else {
+            mImageLabel.setImageResource(R.drawable.nullimg);
+        }
+
 
         mNameLabel.setText(mFood.getName());
         return view;
