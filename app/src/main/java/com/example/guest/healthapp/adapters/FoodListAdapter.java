@@ -73,7 +73,11 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.FoodVi
         }
 
         public void bindFood(Food food) {
-            Picasso.with(mContext).load(food.getPhoto()).into(mFoodImageView);
+            if (food.getPhoto() != "null") {
+                Picasso.with(mContext).load(food.getPhoto()).into(mFoodImageView);
+            } else {
+                mFoodImageView.setImageResource(R.drawable.nullimg);
+            }
             mNameTextView.setText(food.getName());
         }
     }
