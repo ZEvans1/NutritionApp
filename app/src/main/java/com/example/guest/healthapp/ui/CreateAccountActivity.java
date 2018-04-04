@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,12 +42,19 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         ButterKnife.bind(this);
-
         mAuth = FirebaseAuth.getInstance();
+        mCreateAccountButton.setOnClickListener(this);
         createAuthStateListener();
         createAuthProgressDialog();
-        mCreateAccountButton.setOnClickListener(this);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_photo, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
 
     private void createAuthProgressDialog() {
         mAuthProgressDialog = new ProgressDialog(this);
@@ -64,7 +73,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         boolean validEmail = isValidEmail(userEmail);
         boolean validName = isValidName(mName);
         boolean validPassword = isValidPassword(password, confirmPassword);
-
         if (!validEmail || !validName || !validPassword) return;
 
         mAuthProgressDialog.show();
@@ -123,7 +131,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
         user.updateProfile(addProfileName)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
-
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
