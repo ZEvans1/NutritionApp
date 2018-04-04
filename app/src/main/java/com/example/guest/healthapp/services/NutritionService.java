@@ -107,11 +107,27 @@ public class NutritionService {
 
                 String foodName = foodJSON.getString("food_name");
 
+                String servingUnit = foodJSON.getString("serving_unit");
+
                 String nfCalories = foodJSON.getString("nf_calories");
+
+                String nfTotalFat = foodJSON.getString("nf_total_fat");
+
+                String nfSaturatedFat = foodJSON.getString("nf_saturated_fat");
+
+                String nfCholesterol = foodJSON.getString("nf_cholesterol");
+
+                String nfSodium = foodJSON.getString("nf_sodium");
+
+                String nfTotalCarbohydrate = foodJSON.getString("nf_total_carbohydrate");
+
+                String nfDietaryFiber = foodJSON.getString("nf_dietary_fiber");
+
+                String nfProtein = foodJSON.getString("nf_protein");
 
                 String nfSugars = foodJSON.getString("nf_sugars");
 
-                Nutrient nutrient = new Nutrient(foodName, nfCalories, nfSugars);
+                Nutrient nutrient = new Nutrient(foodName, servingUnit, nfCalories, nfTotalFat, nfSaturatedFat, nfCholesterol, nfSodium, nfTotalCarbohydrate, nfDietaryFiber, nfProtein, nfSugars);
                 nutrients.add(nutrient);
             }
         } catch (IOException e) {

@@ -36,6 +36,13 @@ public class NutrientActivity extends AppCompatActivity implements View.OnClickL
     @BindView(R.id.caloriesTextView) TextView mCaloriesTextView;
     @BindView(R.id.sugarsTextView) TextView mSugarsTextView;
     @BindView(R.id.buttonSaveNutrient) Button mButtonSaveNutrient;
+    @BindView(R.id.servingTextView) TextView mServingTextView;
+    @BindView(R.id.sodiumTextView) TextView mSodiumTextView;
+    @BindView(R.id.fatTextView) TextView mFatTextView;
+    @BindView(R.id.satfatTextView) TextView mSatFatTextView;
+    @BindView(R.id.cholesterolTextView) TextView mCholesterolTextView;
+    @BindView(R.id.carbsTextView) TextView mCarbsTextView;
+    @BindView(R.id.proteinTextView) TextView mProteinTextView;
     public ArrayList<Nutrient> nutrients = new ArrayList<>();
 
     @Override
@@ -85,8 +92,32 @@ public class NutrientActivity extends AppCompatActivity implements View.OnClickL
                         public void run() {
                             mFoodNameTextView.setText(nutrients.get(0).getFoodName());
 
+                            String servingText = "Serving size:" + " " + nutrients.get(0).getServingUnit();
+                            mServingTextView.setText(servingText);
+
                             String caloriesText = getString(R.string.caloriesString) + " " + nutrients.get(0).getNfCalories();
                             mCaloriesTextView.setText(caloriesText);
+
+                            String totalFatText = "Total Fat:" + " " + nutrients.get(0).getNfTotalFat();
+                            mFatTextView.setText(totalFatText);
+
+                            String satFatText = "Sat. Fat:" + " " + nutrients.get(0).getNfSaturatedFat();
+                            mSatFatTextView.setText(satFatText);
+
+                            String cholesterolText = "Cholesterol:" + " " + nutrients.get(0).getNfCholesterol();
+                            mCholesterolTextView.setText(cholesterolText);
+
+                            String sodiumText = "Sodium:" + " " + nutrients.get(0).getNfSodium();
+                            mSodiumTextView.setText(sodiumText);
+
+                            String carbsText = "Total carbs:" + " " + nutrients.get(0).getNfTotalCarbohydrate();
+                            mCarbsTextView.setText(carbsText);
+
+                            String fiberText = "Fiber:" + " " + nutrients.get(0).getNfDietaryFiber();
+
+
+                            String proteinText = "Protein:" + " " + nutrients.get(0).getNfProtein();
+                            mProteinTextView.setText(proteinText);
 
                             String sugarsText = getString(R.string.sugarsString) + " " + nutrients.get(0).getNfSugars();
                             mSugarsTextView.setText(sugarsText);
