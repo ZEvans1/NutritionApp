@@ -50,6 +50,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .child(Constants.FIREBASE_CHILD_SEARCHED_FOOD);
 
         super.onCreate(savedInstanceState);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Typeface caviarFont = Typeface.createFromAsset(getAssets(), "fonts/caviardreams.ttf");
