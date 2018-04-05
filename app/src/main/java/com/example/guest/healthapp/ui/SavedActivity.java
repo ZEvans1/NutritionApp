@@ -1,10 +1,13 @@
 package com.example.guest.healthapp.ui;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,12 +24,16 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import org.parceler.Parcels;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -38,11 +45,14 @@ public class SavedActivity extends AppCompatActivity {
             .getInstance()
             .getReference("savedNutrients");
 
-    private Query userQuery = FirebaseDatabase
-            .getInstance()
-            .getReference("users")
-            .child(firebaseUser.getUid())
-            .child("photo");
+//    private Query userQuery = FirebaseDatabase
+//            .getInstance()
+//            .getReference("users")
+//            .child(firebaseUser.getUid())
+//            .child("photo");
+
+
+
     private FirebaseRecyclerAdapter mFirebaseAdapter;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private String userImageCode;
@@ -57,12 +67,11 @@ public class SavedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved);
         ButterKnife.bind(this);
-        Log.d("searched query", userQuery.toString());
+//        Log.d("searched query", userQuery.toString());
+        bindUserPicture();
         setupFirebaseAdapter();
-//        userId = firebaseUser.getUid();
-//        Log.d("Look at me!!!", userId);
-//        Log.d("Here's the user query: ", userQuery.toString());
     }
+
 
     private void setupFirebaseAdapter() {
         FirebaseRecyclerOptions<Nutrient> options =
@@ -89,6 +98,41 @@ public class SavedActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mFirebaseAdapter);
     }
+
+    public void bindUserPicture() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("users")
+                .child(firebaseUser.getUid())
+                .child("photo");
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String photoString = dataSnapshot.getValue(String.class);
+                Log.d("I am the photo!!!", photoString);
+                try {
+                    Bitmap imageBitmap = decodeFromFirebaseBase64(photoString);
+                    mUserImageView.setImageBitmap(imageBitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // ...
+            }
+        });
+
+
+
+    }
+
+    public static Bitmap decodeFromFirebaseBase64(String image) throws IOException {
+        byte[] decodedByteArray = android.util.Base64.decode(image, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(decodedByteArray, 0, decodedByteArray.length);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
