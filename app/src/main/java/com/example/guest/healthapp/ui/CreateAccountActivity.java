@@ -33,11 +33,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener{
-    public static final String TAG = CreateAccountActivity.class.getSimpleName();
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private ProgressDialog mAuthProgressDialog;
-    private String mName;
     private static final int REQUEST_IMAGE_CAPTURE = 111;
 
     @BindView(R.id.nameEditText) EditText mNameEditText;
@@ -45,6 +40,13 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     @BindView(R.id.passwordEditText) EditText mPasswordEditText;
     @BindView(R.id.confirmPasswordEditText) EditText mConfirmPasswordEditText;
     @BindView(R.id.createAccountButton) Button mCreateAccountButton;
+
+    public static final String TAG = CreateAccountActivity.class.getSimpleName();
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private ProgressDialog mAuthProgressDialog;
+    private String mName;
+    private String imageCode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,9 +60,10 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_photo, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -74,26 +77,27 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         return false;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && requestCode == getActivity().RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            encodeBitmapAndSaveToFirebase(imageBitmap);
-        }
-    }
-
     public void onLaunchCamera() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            encodeBitmapAndSaveForUser(imageBitmap);
         }
     }
 
-    public void encodeBitmapAndSaveToFirebase(Bitmap bitmap) {
+
+    public void encodeBitmapAndSaveForUser(Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-        String imageEncoded = Base64.encodeToString(baos, toByteArray(), Base64.DEFAULT);
+        String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+        imageCode = imageEncoded;
+//        Log.d("LOOK AT ME: ", imageCode);
     }
 
 
