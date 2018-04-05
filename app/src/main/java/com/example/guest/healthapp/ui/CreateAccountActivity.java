@@ -17,7 +17,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.guest.healthapp.Constants;
 import com.example.guest.healthapp.R;
+import com.example.guest.healthapp.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -97,7 +99,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
         String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
         imageCode = imageEncoded;
-//        Log.d("LOOK AT ME: ", imageCode);
+        Log.d("LOOK AT ME: ", imageCode);
     }
 
 
@@ -132,11 +134,28 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Authentication successful");
                             createFirebaseUserProfile(task.getResult().getUser());
+                            createNewUserModel();
                         } else {
                             Toast.makeText(CreateAccountActivity.this, "Auth failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+    }
+
+    private void createNewUserModel() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        User mUser = new User(mName, uid, imageCode);
+
+        DatabaseReference userRef = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_USERS)
+                .child(uid);
+        DatabaseReference pushRef = userRef.push();
+        String pushId = pushRef.getKey();
+        mUser.setPushId(pushId);
+        pushRef.setValue(mUser);
     }
 
     private boolean isValidEmail(String email) {
