@@ -7,15 +7,15 @@ public class User {
     String userName;
     String uid;
     String photo;
-    String pushId;
+//    String pushId;
 
-    public String getPushId() {
-        return pushId;
-    }
-
-    public void setPushId(String pushId) {
-        this.pushId = pushId;
-    }
+//    public String getPushId() {
+//        return pushId;
+//    }
+//
+//    public void setPushId(String pushId) {
+//        this.pushId = pushId;
+//    }
 
     public User() {}
 

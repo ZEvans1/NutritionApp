@@ -152,10 +152,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                 .getInstance()
                 .getReference(Constants.FIREBASE_CHILD_USERS)
                 .child(uid);
-        DatabaseReference pushRef = userRef.push();
-        String pushId = pushRef.getKey();
-        mUser.setPushId(pushId);
-        pushRef.setValue(mUser);
+        userRef.setValue(mUser);
+//        DatabaseReference pushRef = userRef.push();
+//        String pushId = pushRef.getKey();
+//        mUser.setPushId(pushId);
+//        pushRef.setValue(mUser);
     }
 
     private boolean isValidEmail(String email) {
