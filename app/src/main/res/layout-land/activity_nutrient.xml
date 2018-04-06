@@ -134,4 +134,18 @@
         android:text="Protein"
         app:layout_constraintBottom_toTopOf="@+id/buttonSaveNutrient"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/nutrientImageView"
+        android:layout_width="109dp"
+        android:layout_height="98dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/caloriesTextView"
+        app:layout_constraintEnd_toStartOf="@+id/foodNameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nullimg" />
 </android.support.constraint.ConstraintLayout>
