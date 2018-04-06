@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/aboutTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="About"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/websiteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/apiImageView"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/aboutTextView"
+        android:layout_toRightOf="@+id/aboutTextView"
+        android:text="Have questions about the data? Tap below: "
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/apiImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        app:srcCompat="@drawable/nutritionixapi" />
+
+    <TextView
+        android:id="@+id/aboutMeTextView"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/aboutTextView"
+        android:layout_alignLeft="@+id/websiteTextView"
+        android:layout_alignStart="@+id/websiteTextView"
+        android:layout_marginBottom="14dp"
+        android:text="@string/aboutMeString" />
+
+    <TextView
+        android:id="@+id/contactTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/aboutMeTextView"
+        android:layout_alignStart="@+id/aboutMeTextView"
+        android:layout_below="@+id/aboutTextView"
+        android:text="@string/contactStringOne" />
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/contactTextView"
+        android:layout_alignBottom="@+id/contactTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/emailString" />
+
+    <TextView
+        android:id="@+id/githubTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/emailTextView"
+        android:layout_alignStart="@+id/emailTextView"
+        android:layout_below="@+id/emailTextView"
+        android:text="@string/githubString" />
+</RelativeLayout>
