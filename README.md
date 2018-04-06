@@ -1,7 +1,7 @@
 # _Meal Maker_
 ## _(under construction)_
 
-#### _A mobile app intended to let users create and share meals using the nutritionix API. Android week 2 @ Epicodus, Mar. 23, 2018._
+#### _A mobile app intended to let users find information about food using nutritionix API. Android weeks 1-4 @ Epicodus, April 6, 2018._
 
 #### By _**Zach Evans**_
 
@@ -36,9 +36,7 @@ App instructions:
 
 ## Known Bugs / Issues
 
-* _Food details are not shown (second API call is in progress on another branch at the moment.)_
-* _Image sizes / quality for the detail view are not correctly sized._
-* _Default image is not appearing for foods that do not have an image returned from the API._
+_Nutrient API call could be refactored into list / fragments instead of being a 2nd activity._
 
 ## Support and contact details
 
@@ -49,6 +47,8 @@ _Direct questions or comments to: zte.zachary@gmail.com_
 * _Java_
 * _Android_
 * _Android Studio_
+* _Firebase_
+* _Nutritionix API_
 
 
 ### License
