@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.guest.healthapp.ui.NutrientActivity">
+
+    <TextView
+        android:id="@+id/foodNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="206dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginStart="365dp"
+        android:layout_marginTop="16dp"
+        android:text="Name"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSaveNutrient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/caloriesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="37dp"
+        android:layout_marginEnd="141dp"
+        android:layout_marginStart="77dp"
+        android:text="@string/caloriesString"
+        app:layout_constraintBottom_toTopOf="@+id/sodiumTextView"
+        app:layout_constraintEnd_toStartOf="@+id/satfatTextView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/sugarsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="76dp"
+        android:layout_marginTop="96dp"
+        android:text="@string/sugarsString"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSaveNutrient"
+        android:layout_width="579dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="9dp"
+        android:text="Save Details"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/servingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="31dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="96dp"
+        android:text="Serving Unit"
+        app:layout_constraintBottom_toTopOf="@+id/caloriesTextView"
+        app:layout_constraintEnd_toStartOf="@+id/fatTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fatTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="33dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginTop="96dp"
+        android:text="Total Fat"
+        app:layout_constraintBottom_toTopOf="@+id/satfatTextView"
+        app:layout_constraintEnd_toStartOf="@+id/sugarsTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/satfatTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginBottom="39dp"
+        android:layout_marginEnd="137dp"
+        android:text="Sat. Fat"
+        app:layout_constraintBottom_toTopOf="@+id/cholesterolTextView"
+        app:layout_constraintEnd_toStartOf="@+id/carbsTextView" />
+
+    <TextView
+        android:id="@+id/cholesterolTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="34dp"
+        android:layout_marginEnd="116dp"
+        android:text="Cholesterol"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSaveNutrient"
+        app:layout_constraintEnd_toStartOf="@+id/proteinTextView" />
+
+    <TextView
+        android:id="@+id/sodiumTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="34dp"
+        android:layout_marginEnd="145dp"
+        android:layout_marginStart="68dp"
+        android:text="Sodium"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSaveNutrient"
+        app:layout_constraintEnd_toStartOf="@+id/cholesterolTextView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/carbsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="37dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginTop="31dp"
+        android:text="Carbs"
+        app:layout_constraintBottom_toTopOf="@+id/proteinTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sugarsTextView" />
+
+    <TextView
+        android:id="@+id/proteinTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="34dp"
+        android:layout_marginEnd="99dp"
+        android:text="Protein"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSaveNutrient"
+        app:layout_constraintEnd_toEndOf="parent" />
+</android.support.constraint.ConstraintLayout>

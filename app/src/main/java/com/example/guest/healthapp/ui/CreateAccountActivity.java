@@ -99,7 +99,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
         String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
         imageCode = imageEncoded;
-        Log.d("LOOK AT ME: ", imageCode);
+//        Log.d("LOOK AT ME: ", imageCode);
     }
 
 
@@ -132,7 +132,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                         mAuthProgressDialog.dismiss();
 
                         if (task.isSuccessful()) {
-                            Log.d(TAG, "Authentication successful");
                             createFirebaseUserProfile(task.getResult().getUser());
                             createNewUserModel();
                         } else {
@@ -147,16 +146,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         String uid = user.getUid();
 
         User mUser = new User(mName, uid, imageCode);
-
         DatabaseReference userRef = FirebaseDatabase
                 .getInstance()
                 .getReference(Constants.FIREBASE_CHILD_USERS)
                 .child(uid);
         userRef.setValue(mUser);
-//        DatabaseReference pushRef = userRef.push();
-//        String pushId = pushRef.getKey();
-//        mUser.setPushId(pushId);
-//        pushRef.setValue(mUser);
     }
 
     private boolean isValidEmail(String email) {
@@ -208,8 +202,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View view) {
-        if (view == mCreateAccountButton) {
+        if (view == mCreateAccountButton && imageCode != null) {
+            Log.d("What is imagecode?", imageCode);
             createNewUser();
+        } else {
+            Toast.makeText(CreateAccountActivity.this, "Make sure to take a photo! (Camera in menu bar)", Toast.LENGTH_LONG).show();
         }
     }
 
