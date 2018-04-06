@@ -127,7 +127,9 @@ public class NutritionService {
 
                 String nfSugars = foodJSON.getString("nf_sugars");
 
-                Nutrient nutrient = new Nutrient(foodName, servingUnit, nfCalories, nfTotalFat, nfSaturatedFat, nfCholesterol, nfSodium, nfTotalCarbohydrate, nfDietaryFiber, nfProtein, nfSugars);
+                String photo = foodJSON.getJSONObject("photo").getString("thumb");
+
+                Nutrient nutrient = new Nutrient(foodName, servingUnit, nfCalories, nfTotalFat, nfSaturatedFat, nfCholesterol, nfSodium, nfTotalCarbohydrate, nfDietaryFiber, nfProtein, nfSugars, photo);
                 nutrients.add(nutrient);
             }
         } catch (IOException e) {

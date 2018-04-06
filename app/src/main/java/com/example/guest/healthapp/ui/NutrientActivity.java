@@ -1,5 +1,6 @@
 package com.example.guest.healthapp.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import com.example.guest.healthapp.models.Nutrient;
 import com.example.guest.healthapp.services.NutritionService;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,6 +35,7 @@ public class NutrientActivity extends AppCompatActivity implements View.OnClickL
 //    private SharedPreferences mSharedPreferences;
 //    private SharedPreferences.Editor mEditor;
 
+    @BindView(R.id.nutrientImageView) ImageView mNutrientImageView;
     @BindView(R.id.foodNameTextView) TextView mFoodNameTextView;
     @BindView(R.id.caloriesTextView) TextView mCaloriesTextView;
     @BindView(R.id.sugarsTextView) TextView mSugarsTextView;
@@ -90,6 +94,13 @@ public class NutrientActivity extends AppCompatActivity implements View.OnClickL
                     NutrientActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            if (!nutrients.get(0).getThumb().equals("null")) {
+
+                                Picasso.get().load(nutrients.get(0).getThumb()).into(mNutrientImageView);
+                            } else {
+                                mNutrientImageView.setImageResource(R.drawable.nullimg);
+                            }
+
                             mFoodNameTextView.setText(nutrients.get(0).getFoodName());
 
                             String servingText = "Serving size:" + " " + nutrients.get(0).getServingUnit();

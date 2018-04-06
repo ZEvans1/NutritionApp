@@ -16,10 +16,11 @@ public class Nutrient {
     String nfDietaryFiber;
     String nfProtein;
     String nfSugars;
+    String thumb;
 
     public Nutrient() {}
 
-    public Nutrient(String foodName, String servingUnit, String nfCalories, String nfTotalFat, String nfSaturatedFat, String nfCholesterol, String nfSodium, String nfTotalCarbohydrate, String nfDietaryFiber, String nfProtein, String nfSugars) {
+    public Nutrient(String foodName, String servingUnit, String nfCalories, String nfTotalFat, String nfSaturatedFat, String nfCholesterol, String nfSodium, String nfTotalCarbohydrate, String nfDietaryFiber, String nfProtein, String nfSugars, String thumb) {
         this.foodName = foodName;
         this.servingUnit = servingUnit;
         this.nfCalories = nfCalories;
@@ -31,6 +32,15 @@ public class Nutrient {
         this.nfDietaryFiber = nfDietaryFiber;
         this.nfProtein = nfProtein;
         this.nfSugars = nfSugars;
+        this.thumb = thumb;
+    }
+
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
     }
 
     public String getFoodName() {

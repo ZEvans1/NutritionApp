@@ -47,7 +47,7 @@ public class FoodDetailFragment extends Fragment {
 
 
         if (mFood.getPhoto() != null) {
-            Picasso.with(view.getContext()).load(mFood.getPhoto()).into(mImageLabel);
+            Picasso.get().load(mFood.getPhoto()).into(mImageLabel);
         } else {
             mImageLabel.setImageResource(R.drawable.nullimg);
         }
