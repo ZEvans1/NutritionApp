@@ -1,10 +1,6 @@
--Add photo to nutrient activity / API response and display
-
 -Resize user image in saved activity
 
 -Add alternate resources for other activities to make sure landscape doesn't look bad
-    -main (OK as default)
-    -list (OK as default)
     -pager (images need to be sized, but that could be done in normal layout, otherwise OK)
     -about (definitely needs an alternate resource)
 

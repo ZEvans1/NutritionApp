@@ -14,7 +14,7 @@
         android:layout_marginEnd="80dp"
         android:layout_marginTop="48dp"
         android:text="Name"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/sodiumTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -135,8 +135,8 @@
 
     <ImageView
         android:id="@+id/nutrientImageView"
-        android:layout_width="109dp"
-        android:layout_height="98dp"
+        android:layout_width="128dp"
+        android:layout_height="118dp"
         android:layout_marginBottom="48dp"
         android:layout_marginEnd="108dp"
         android:layout_marginStart="34dp"
